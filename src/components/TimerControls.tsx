@@ -4,9 +4,9 @@ import Button from '../atomComponents/Button';
 
 interface TimerControlsProps {
   isRunning: boolean;
-  remainingTime: number;
+  remainingTime?: number;
   onToggle: () => void;
-  onRestart: () => void;
+  onRestart?: () => void;
 }
 
 export const TimerControls: React.FC<TimerControlsProps> = ({
@@ -15,7 +15,7 @@ export const TimerControls: React.FC<TimerControlsProps> = ({
   onToggle,
   onRestart,
 }) => {
-  const isCompleted = remainingTime <= 0;
+  const isCompleted = remainingTime && remainingTime <= 0;
   
   if (isCompleted) {
     return (

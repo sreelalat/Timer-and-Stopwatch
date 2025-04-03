@@ -10,3 +10,14 @@ export const formatTime = (seconds: number): string => {
   }
   return `${pad(minutes)}:${pad(remainingSeconds)}`;
 };
+
+export const formatTimeInMs = (ms: number) => {
+  const minutes = Math.floor(ms / 60000)
+    .toString()
+    .padStart(2, "0");
+  const seconds = Math.floor((ms % 60000) / 1000)
+    .toString()
+    .padStart(2, "0");
+  const milliseconds = ((ms % 1000) / 10).toFixed(0).padStart(2, "0");
+  return `${minutes}:${seconds}.${milliseconds}`;
+};
