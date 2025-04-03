@@ -1,4 +1,5 @@
 import { Timer as TimerIcon, Watch } from 'lucide-react';
+import Button from '../atomComponents/Button';
 
 interface NavigationContentProps {
   activeTab: 'timers' | 'stopwatch';
@@ -7,7 +8,7 @@ interface NavigationContentProps {
 
 const NavigationContent = ({ activeTab, setActiveTab }: NavigationContentProps) => (
   <>
-    <button
+    {/* <button
       onClick={() => setActiveTab('timers')}
       className={`flex items-center gap-2 transition-colors ${
         activeTab === 'timers'
@@ -15,20 +16,37 @@ const NavigationContent = ({ activeTab, setActiveTab }: NavigationContentProps) 
           : 'text-gray-600 hover:text-green-600'
       }`}
     >
-      <TimerIcon className="w-5 h-5" />
-      <span className="font-medium">Timers</span>
-    </button>
-    <button
+
+    </button> */}
+    <Button
+      label={
+        <>
+          <TimerIcon className="w-5 h-5" />
+          <span className="font-medium">Timers</span>
+        </>
+      }
+      onClick={() => setActiveTab('timers')}
+      variant={'outline'}
+      className={`flex items-center gap-2 transition-colors ${activeTab === 'timers'
+        ? 'text-green-600'
+        : 'text-gray-600 hover:text-green-600'
+        }`}
+    />
+    <Button
+      label={
+        <>
+          <Watch className="w-5 h-5" />
+          <span className="font-medium">Stopwatch</span>
+        </>
+      }
       onClick={() => setActiveTab('stopwatch')}
-      className={`flex items-center gap-2 transition-colors ${
-        activeTab === 'stopwatch'
+      variant={'outline'}
+      className={`flex items-center gap-2 transition-colors 
+      ${activeTab === 'stopwatch'
           ? 'text-green-600'
           : 'text-gray-600 hover:text-green-600'
-      }`}
-    >
-      <Watch className="w-5 h-5" />
-      <span className="font-medium">Stopwatch</span>
-    </button>
+        }`}
+    />
   </>
 );
 
