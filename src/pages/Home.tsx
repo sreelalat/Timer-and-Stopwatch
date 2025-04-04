@@ -33,7 +33,7 @@ function Home() {
             <h1 className="text-3xl font-bold text-gray-900">Timer</h1>
           </div>
           
-          <div className="lg:mb-8 h-[calc(100%-50px)] lg:h-full">
+          <div className="lg:mb-8 h-[calc(100%-50px)] lg:h-full overflow-auto">
             {activeTab === 'timers' ? <Timer /> : <Stopwatch />}
           </div>
           <div className='lg:hidden flex justify-around h-[50px] absolute bg-white w-full left-0 bottom-0'>

@@ -3,6 +3,7 @@ import { X, Clock } from 'lucide-react';
 import { useTimerStore } from '../store/useTimerStore';
 import { validateTimerForm } from '../utils/validation';
 import { Timer } from '../types/timer';
+import { toast } from 'sonner';
 
 interface TimerModalProps {
   isOpen: boolean;
@@ -218,11 +219,8 @@ export const TimerModal: React.FC<TimerModalProps> = ({
             </button>
             <button
               type="submit"
-              className={`px-4 py-2 text-sm font-medium text-white rounded-md transition-colors ${isTitleValid && isTimeValid
-                ? 'bg-green-600 hover:bg-green-700'
-                : 'bg-blue-400 cursor-not-allowed'
-                }`}
-              disabled={!isTitleValid || !isTimeValid}
+              className={`px-4 py-2 text-sm font-medium text-white rounded-md transition-colors bg-green-600 hover:bg-green-700`}
+              // disabled={!isTitleValid || !isTimeValid}
             >
               {AddModal ? 'Add Timer' : 'Save Changes'}
             </button>

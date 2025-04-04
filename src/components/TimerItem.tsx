@@ -21,28 +21,24 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
   const timerAudio = TimerAudio.getInstance();
   const hasEndedRef = useRef(false);
 
-  // useEffect(() => {
-  //   if (timer.isRunning) {
-  //     intervalRef.current = window.setInterval(() => {
-  //       updateTimer(timer.id);
-        
-  //       if (timer.remainingTime <= 1 && !hasEndedRef.current) {
-  //         hasEndedRef.current = true;
-  //         timerAudio.play().catch(console.error);
-          
-  //         toast.success(`Timer "${timer.title}" has ended!`, {
-  //           duration: 5000,
-  //           action: {
-  //             label: 'Dismiss',
-  //             onClick: timerAudio.stop,
-  //           },
-  //         });
-  //       }
-  //     }, 1000);
-  //   }
+  useEffect(() => {
+    if (timer.remainingTime === 0 && !hasEndedRef.current) {
+      const isMobile = window.innerWidth <= 768;
+      hasEndedRef.current = true;
+      timerAudio.play().catch(console.error);
 
-  //   return () => clearInterval(intervalRef.current!);
-  // }, [timer.isRunning, timer.id, timer.remainingTime, timer.title, timerAudio, updateTimer]);
+      toast.success(`Timer "${timer.title}" has ended!`, {
+        duration: Infinity,
+        action: {
+          label: 'Dismiss',
+          onClick: () => timerAudio.stop(),
+        },
+        position: isMobile ? 'bottom-right' : 'top-right',
+      });
+    }
+
+  }, [timer.remainingTime]);
+
 
   useEffect(() => {
     if (timer.isRunning && !intervalRefs.current.has(timer.id)) {
@@ -61,6 +57,7 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
       }
     };
   }, [timer.isRunning, timer.id]);
+
 
   const handleRestart = () => {
     hasEndedRef.current = false;
