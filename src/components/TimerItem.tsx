@@ -93,8 +93,8 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
         
         <div className="relative">
           <div className="flex justify-between items-start mb-4">
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800">{timer.title}</h3>
+            <div className='w-full'>
+              <h3 className="text-xl font-semibold text-gray-800 truncate max-w-[125px]">{timer.title}</h3>
               <p className="text-gray-600 mt-1">{timer.description}</p>
             </div>
             <div className="flex gap-2">
@@ -131,7 +131,6 @@ export const TimerItem: React.FC<TimerItemProps> = ({ timer }) => {
             <TimerProgress
               progress={(timer.remainingTime / timer.duration) * 100}
             />
-            <>{console.log("remainingTime--timer.remainingTime", timer.remainingTime, timer)}</>
             <TimerControls
               isRunning={timer.isRunning}
               remainingTime={timer.remainingTime}

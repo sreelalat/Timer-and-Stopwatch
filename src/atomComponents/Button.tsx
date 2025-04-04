@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={` ${className} ${baseStyles} ${variantStyles[variant]} ${disabled ? "opacity-50 bg-gray-300 text-black hover:bg-gray-300 cursor-not-allowed" : ""} `}
+            className={` ${className} ${baseStyles} ${variantStyles[variant]} ${disabled ? "opacity-50 !bg-gray-300 !text-[#000000] hover:!bg-gray-300 cursor-not-allowed" : ""} `}
             title={tooltip}
         >
             {label}

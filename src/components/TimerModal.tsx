@@ -3,7 +3,6 @@ import { X, Clock } from 'lucide-react';
 import { useTimerStore } from '../store/useTimerStore';
 import { validateTimerForm } from '../utils/validation';
 import { Timer } from '../types/timer';
-import { toast } from 'sonner';
 
 interface TimerModalProps {
   isOpen: boolean;
