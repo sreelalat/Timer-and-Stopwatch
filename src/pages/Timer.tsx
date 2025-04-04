@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { TimerList } from '../components/TimerList';
-import { AddTimerModal } from '../components/AddTimerModal';
 import Button from '../atomComponents/Button';
+import { TimerModal } from '../components/TimerModal';
 
 function Timer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,12 +17,12 @@ function Timer() {
         </>}
         onClick={() => setIsModalOpen(true)}
         variant={'primary'}
-        className='flex items-center gap-2 shadow-md hover:shadow-lg'
+        className='flex items-center gap-2 shadow-md hover:shadow-lg absolute top-8 right-8'
       />
 
       <TimerList />
 
-      <AddTimerModal
+      <TimerModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
