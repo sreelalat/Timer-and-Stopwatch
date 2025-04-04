@@ -9,7 +9,7 @@ function Timer() {
 
   return (
 
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-2 lg:mt-6">
       <Button
         label={<>
           <Plus className="w-5 h-5" />
