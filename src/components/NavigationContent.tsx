@@ -27,7 +27,7 @@ const NavigationContent = ({ activeTab, setActiveTab }: NavigationContentProps) 
       }
       onClick={() => setActiveTab('timers')}
       variant={'outline'}
-      className={`flex items-center gap-2 transition-colors ${activeTab === 'timers'
+      className={`flex items-center gap-2 lg:p-2.5 transition-colors ${activeTab === 'timers'
         ? 'text-green-600'
         : 'text-gray-600 hover:text-green-600'
         }`}
@@ -41,7 +41,7 @@ const NavigationContent = ({ activeTab, setActiveTab }: NavigationContentProps) 
       }
       onClick={() => setActiveTab('stopwatch')}
       variant={'outline'}
-      className={`flex items-center gap-2 transition-colors 
+      className={`flex items-center lg:p-2.5 gap-2 transition-colors 
       ${activeTab === 'stopwatch'
           ? 'text-green-600'
           : 'text-gray-600 hover:text-green-600'

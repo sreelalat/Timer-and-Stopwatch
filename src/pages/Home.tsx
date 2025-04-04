@@ -19,22 +19,25 @@ function Home() {
             <Clock className="w-8 h-8 text-green-600" />
             <h1 className="text-2xl font-bold text-gray-900">Timer</h1>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             <NavigationContent activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="lg:ml-64">
-        <div className="container mx-auto px-4 py-8">
+      <div className="lg:ml-64 h-screen">
+        <div className="container mx-auto px-4 py-8 h-full">
           <div className="flex items-center gap-3 lg:hidden">
             <Clock className="w-8 h-8 text-green-600" />
             <h1 className="text-3xl font-bold text-gray-900">Timer</h1>
           </div>
           
-          <div className="mb-20 lg:mb-8">
+          <div className="lg:mb-8 h-[calc(100%-50px)] lg:h-full">
             {activeTab === 'timers' ? <Timer /> : <Stopwatch />}
+          </div>
+          <div className='lg:hidden flex justify-around h-[50px] absolute bg-white w-full left-0 bottom-0'>
+            <NavigationContent activeTab={activeTab} setActiveTab={setActiveTab} />
           </div>
         </div>
       </div>

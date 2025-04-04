@@ -45,12 +45,13 @@ function Stopwatch() {
     setLaps([{ lap: laps.length + 1, splitTime: lapTime, totalTime: timer.duration }, ...laps]);
   };
 
-  return <div>
-    <div className="relative w-fit bg-white rounded-xl shadow-lg p-6 transition-transform hover:scale-102 overflow-hidden">
-      <div className="text-4xl font-mono font-bold text-gray-800 mb-4">
+  return <div className="h-full flex justify-center items-baseline">
+    <div className="relative bg-white rounded-xl shadow-lg p-6 transition-transform hover:scale-102 
+     w-[350px] mt-8 h-fit max-h-[calc(100%-50px)] overflow-auto ">
+      <div className="text-4xl font-mono font-bold text-gray-800 mb-4 text-center">
         {formatTimeInMs(timer?.duration)}
       </div>
-      <div>
+      <div className="flex justify-center gap-2.5">
         <TimerControls
           isRunning={timer.isRunning}
           onToggle={handleToggle}
@@ -59,37 +60,42 @@ function Stopwatch() {
           label={<Flag className="w-5 h-5" />}
           onClick={recordLap}
           variant='secondary'
-          tooltip="Edit Timer"
+          tooltip="Split Timer"
+          disabled={!timer.isRunning}
           className='p-2 rounded-full'
         />
         <Button
           label={<RotateCcw className="w-5 h-5" />}
           onClick={handleRestart}
-          variant='secondary'
+          variant='tertiary'
           tooltip="Restart Timer"
+          // disabled={!timer.isRunning}
           className='p-2 rounded-full'
         />
       </div>
-      <div className="mt-4 bg-gray-50 p-2 rounded-lg">
-        <table className="w-full text-sm text-left">
-          <thead>
-            <tr>
-              <th className="px-2">Lap</th>
-              <th className="px-2">Split Time</th>
-              <th className="px-2">Total Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {laps.map((lap) => (
-              <tr key={lap.lap} className="border-t">
-                <td className="px-2">{lap.lap}</td>
-                <td className="px-2">{formatTimeInMs(lap.splitTime)}</td>
-                <td className="px-2">{formatTimeInMs(lap.totalTime)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {
+        laps.length > 0 &&
+        <div className="mt-4 bg-gray-50 rounded-lg shadow-[rgba(0,0,0,0.02)_0px_1px_3px_0px,rgba(27,31,35,0.15)_0px_0px_0px_1px]">
+          <table className="w-full text-sm text-left">
+            <thead>
+              <tr>
+                  <th className="p-2">Lap</th>
+                  <th className="p-2">Split Time</th>
+                  <th className="p-2">Total Time</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white">
+                {laps.map((lap) => (
+                  <tr key={lap.lap} className="border-t">
+                    <td className="py-2 pl-4 pr-2">{lap.lap}</td>
+                    <td className="py-2 pl-4 pr-2">{formatTimeInMs(lap.splitTime)}</td>
+                    <td className="py-2 pl-4 pr-2">{formatTimeInMs(lap.totalTime)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+      }
     </div>
   </div>
 }
